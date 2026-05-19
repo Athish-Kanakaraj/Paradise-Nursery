@@ -5,42 +5,55 @@ import Navbar from './Navbar';
 import { useSelector, useDispatch } from 'react-redux';
 
 import {
-  increaseQuantity,
-  decreaseQuantity,
   removeItem,
+  updateQuantity,
 } from '../redux/CartSlice';
 
 function CartItem({ setShowCart }) {
 
   const dispatch = useDispatch();
 
-  const cartItems = useSelector((state) => state.cart.items);
+  const cartItems = useSelector(
+    (state) => state.cart.items
+  );
 
   const totalAmount = cartItems.reduce(
-    (total, item) => total + item.price * item.quantity,
+    (total, item) =>
+      total + item.price * item.quantity,
     0
   );
 
   return (
+
     <div>
 
       <Navbar setShowCart={setShowCart} />
 
       <div className="cart-container">
 
-        <h2>Total Cart Amount: ${totalAmount}</h2>
+        <h2>
+          Total Cart Amount: ${totalAmount}
+        </h2>
 
         {cartItems.map((item) => (
 
-          <div className="cart-card" key={item.id}>
+          <div
+            className="cart-card"
+            key={item.id}
+          >
 
-            <img src={item.image} alt={item.name} />
+            <img
+              src={item.image}
+              alt={item.name}
+            />
 
             <div>
 
               <h3>{item.name}</h3>
 
-              <p>Unit Price: ${item.price}</p>
+              <p>
+                Unit Price: ${item.price}
+              </p>
 
               <p>
                 Total Price:
@@ -51,7 +64,12 @@ function CartItem({ setShowCart }) {
 
                 <button
                   onClick={() =>
-                    dispatch(decreaseQuantity(item.id))
+                    dispatch(
+                      updateQuantity({
+                        id:item.id,
+                        amount:-1,
+                      })
+                    )
                   }
                 >
                   -
@@ -61,7 +79,12 @@ function CartItem({ setShowCart }) {
 
                 <button
                   onClick={() =>
-                    dispatch(increaseQuantity(item.id))
+                    dispatch(
+                      updateQuantity({
+                        id:item.id,
+                        amount:1,
+                      })
+                    )
                   }
                 >
                   +
@@ -81,18 +104,23 @@ function CartItem({ setShowCart }) {
             </div>
 
           </div>
+
         ))}
 
         <button
           className="checkout-btn"
-          onClick={() => alert('Coming Soon')}
+          onClick={() =>
+            alert('Coming Soon')
+          }
         >
           Checkout
         </button>
 
         <button
           className="continue-btn"
-          onClick={() => setShowCart(false)}
+          onClick={() =>
+            setShowCart(false)
+          }
         >
           Continue Shopping
         </button>
@@ -100,6 +128,7 @@ function CartItem({ setShowCart }) {
       </div>
 
     </div>
+
   );
 }
 
