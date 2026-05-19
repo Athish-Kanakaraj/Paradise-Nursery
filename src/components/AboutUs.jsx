@@ -1,46 +1,62 @@
 import React from 'react';
 
 function AboutUs({ setShowProducts }) {
+
   return (
-    <div className="landing-page">
+
+    <div className="about-us-container">
+
       <div className="overlay">
 
         <div className="left-section">
-          <h1>Welcome To Paradise Nursery</h1>
+
+          <h1>Welcome to Paradise Nursery</h1>
+
           <p>Where Green Meets Serenity</p>
 
           <button
-            className="get-started"
+            className="get-started-btn"
             onClick={() => setShowProducts(true)}
           >
             Get Started
           </button>
+
         </div>
 
         <div className="right-section">
-          <h2>
-            Welcome to Paradise Nursery, where green meets serenity!
-          </h2>
+
+          <h2>About Us</h2>
 
           <p>
-            At Paradise Nursery, we are passionate about bringing
-            nature closer to you. Our mission is to provide a wide
-            range of high-quality plants.
+            Welcome to Paradise Nursery, your trusted destination
+            for beautiful and healthy plants.
           </p>
 
           <p>
-            Our team of experts ensures that every plant meets our
-            strict standards of quality and care.
+            We are passionate about bringing nature closer to
+            homes and workplaces by offering a wide collection
+            of indoor and outdoor plants.
           </p>
 
           <p>
-            Join us in creating a greener, healthier world.
+            Our mission is to promote a greener lifestyle and
+            provide high-quality plants with excellent customer
+            service.
           </p>
+
+          <p>
+            At Paradise Nursery, we believe plants create peace,
+            happiness, and a healthier environment for everyone.
+          </p>
+
         </div>
 
       </div>
+
     </div>
+
   );
+
 }
 
 export default AboutUs;
